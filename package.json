@@ -1,0 +1,24 @@
+{
+  "name": "simple-chats",
+  "version": "1.0.0",
+  "description": "Simple-Chats using Redis, Socket-IO, Bootstrap, ExpressJS, NodeJS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tikusdugem/simple-chats.git"
+  },
+  "author": "Rothem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tikusdugem/simple-chats/issues"
+  },
+  "homepage": "https://github.com/tikusdugem/simple-chats#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "redis": "^2.8.0",
+    "socket.io": "^2.1.1"
+  }
+}
