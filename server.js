@@ -23,10 +23,10 @@ let messages = [];
 
 client.once("ready", () => {
     client.get("users", (err, reply) => {
-        if(reply) users = JSON.stringify(reply);
+        if(reply) users = JSON.parse(reply);
     });
     client.get("messages", (err, reply) => {
-        if(reply) messages = JSON.stringify(reply);
+        if(reply) messages = JSON.parse(reply);
     });
 });
 
@@ -39,17 +39,58 @@ app.get("/", (err, res) => {
 io.on("connection", (socket) => {
     console.log("User Connected!");
 
-    socket.on("message", (data) => {
-        io.emit("users", data);
+    io.emit("user-count", users.length);
+
+    socket.on("join", (userName) => {
+        if(users.indexOf(userName) === -1) {
+            console.log(userName, "Connected!");
+
+            users.push(userName);
+            client.set("users", JSON.stringify(users));
+
+            socket.emit("status", {
+                "userName": userName,
+                status: 1
+            });
+
+            io.emit("user-count", users.length);
+
+            socket.emit("messages", messages);
+        } else {
+            socket.emit("status", {
+                status: 0
+            });
+        }
     });
 
-    socket.on("message-store", (data) => {
+    socket.on("leave", (userName) => {
+        if(userName) {
+            console.log(userName, "Disconnected!");
+
+            users.splice(users.indexOf(userName), 1);
+            client.set("users", JSON.stringify(users));
+
+            socket.emit("status", {
+                "userName": userName,
+                status: 1
+            });
+
+            io.emit("user-count", users.length);
+        } else {
+            socket.emit("status", {
+                status: 0
+            });
+        }
+    });
+
+    socket.on("message", (data) => {
         messages.push({
-            "user": data.user,
+            "user": data.username,
             "message": data.message
         });
-
         client.set("messages", JSON.stringify(messages));
+
+        io.emit("users", data);
     });
 
     socket.on("disconnect", () => {

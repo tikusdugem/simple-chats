@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title> Simple Chats </title>
+
+        <link rel="stylesheet" href="lib/bootstrap-4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="main/main.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1> Simple Chats </h1>
+            
+            <div class="input-group join-chat">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Type Your Username Here . . .">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="join-chat" type="button">Join!</button>
+                </span>
+            </div>
+            
+            <br/>
+            <div class="chat-info"></div>
+            <br/>
+
+            <div class="chat" data-spy="scroll">
+                <div class="messages form-control" id="outputMessage"></div>
+                <br/>
+                <input type="text" class="form-control" name="message" id="message" cols="90" rows="5" placeholder="Type Your Message Here . . ."></input>
+                <br/>               
+                <input type="button" id="send-message" class="btn btn-success" data-username="" value="Send Message">&nbsp;
+                <input type="button" id="leave-chat" class="btn btn-danger" data-username="" value="Leave Chat">
+            </div>
+        </div>
+
+        <script src="socket.io/socket.io.js"></script>
+        <script src="lib/jquery-3.3.1/jquery.min.js"></script>
+        <script src="lib/bootstrap-4.1.3/js/bootstrap.bundle.min.js"></script>
+        <script src="main/main.js"></script>
+    </body>
+</html>

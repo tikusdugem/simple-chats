@@ -1,0 +1,56 @@
+.container{
+    width: 777px;
+    margin: 0 auto;
+}
+
+.messages{
+    border: 1px solid darkgrey;
+    border-bottom: none;
+    width: 781px;
+    height: 240px;
+}
+
+#message{
+    resize: none;
+    width: 100%;
+    background-color: #f9f9f9;
+}
+
+#outputMessage{    
+    overflow: auto;
+    width: 100%;
+    height: 200px;
+    background-color: white;
+}
+
+#footer{
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: block;
+}
+
+.chat{
+    display: none;
+}
+
+.msg{
+    width: 100%;
+}
+
+.user{
+    float: left;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+h1{
+    text-align: center;
+}
+
+body{
+    background-color: #3399ff;
+    display: flex;
+    align-items: center;
+}
