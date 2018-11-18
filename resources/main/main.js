@@ -4,6 +4,15 @@ $(function () {
     socket.on("user-count", (data) => {
         $(".chat-info").text("There are currently " + data + " people in the chat room");
     });
+    socket.on("user-online", (data) => {
+        let html = "";
+
+        for(user of data) {
+            html += "<div>" + user + "</div>";
+        }
+
+        $("#user-online").html(html);
+    });
 
     function joinChat() {
         const username = $.trim($("#username").val());   
@@ -25,7 +34,7 @@ $(function () {
                 $('#leave-chat').data('username', username);
                 $('#send-message').data('username', username);
                 $(".join-chat").hide();
-                $(".chat").show();
+                $("#content").removeClass("d-none");
             }else if(data.status === 0) {
                 alert("Sorry but the username already exists, please choose another one");
                 $("#username").val("").focus();
@@ -53,7 +62,7 @@ $(function () {
 
         socket.on("status", (data) => {
             if(data.status === 1){
-                $(".chat").hide();
+                $("#content").addClass("d-none");
                 $(".join-chat").show();
                 $("#username").val('');                
                 alert(data.userName + " you have successfully left the chat room");

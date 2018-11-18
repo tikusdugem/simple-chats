@@ -54,7 +54,7 @@ io.on("connection", (socket) => {
             });
 
             io.emit("user-count", users.length);
-
+            io.emit("user-online", users);
             socket.emit("messages", messages);
         } else {
             socket.emit("status", {
@@ -76,6 +76,7 @@ io.on("connection", (socket) => {
             });
 
             io.emit("user-count", users.length);
+            io.emit("user-online", users);
         } else {
             socket.emit("status", {
                 status: 0

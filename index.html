@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1> Simple Chats </h1>
-            
+
             <div class="input-group join-chat">
                 <input type="text" class="form-control" id="username" name="username" placeholder="Type Your Username Here . . .">
                 <span class="input-group-btn">
@@ -20,14 +20,18 @@
             <br/>
             <div class="chat-info"></div>
             <br/>
-
-            <div class="chat" data-spy="scroll">
-                <div class="messages form-control" id="outputMessage"></div>
-                <br/>
-                <input type="text" class="form-control" name="message" id="message" cols="90" rows="5" placeholder="Type Your Message Here . . ."></input>
-                <br/>               
-                <input type="button" id="send-message" class="btn btn-success" data-username="" value="Send Message">&nbsp;
-                <input type="button" id="leave-chat" class="btn btn-danger" data-username="" value="Leave Chat">
+            
+            <div id="content" class="d-none row" data-spy="scroll">
+                <div class="form-control user-online col-3">
+                    <h6 style="border-bottom: solid"> Online </h6>
+                    <div id="user-online"></div>
+                </div>
+                <div class="messages form-control col" id="outputMessage"></div>
+                <input type="text" class="form-control" name="message" id="message" cols="90" rows="5" placeholder="Type Your Message Here . . ."/>
+                <div class="mt-2">
+                    <input type="button" id="send-message" class="btn btn-success" data-username="" value="Send Message">
+                    <input type="button" id="leave-chat" class="btn btn-danger" data-username="" value="Leave Chat">
+                </div>
             </div>
         </div>
 
